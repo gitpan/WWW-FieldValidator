@@ -11,7 +11,7 @@ use warnings;;
 
 package WWW::FieldValidator;
 
-our $VERSION = "1.01";
+our $VERSION = "1.02";
 
 # The following constants represent the validator types that can be
 # used to validate the specified user input.
@@ -148,7 +148,7 @@ WWW::FieldValidator
 
 =head1 SYNOPSIS
 
-Used by WWW::Form, provides simple yet robust validation of user entered input.
+WWW::FieldValidator - Used by WWW::Form, provides simple yet robust validation of user entered input
 
 =cut
 
@@ -157,7 +157,7 @@ Used by WWW::Form, provides simple yet robust validation of user entered input.
 This module is used by WWW::Form to perform various validations on input.  This
 document covers using the WWW::FieldValidator module as part of a Form object.  In this
 case, the only thing you need to know how to do is to instantiate WWW::FieldValidators
-properly.  All the validation is handled internally by WWW::Form. 
+properly.  All the validation is handled internally by WWW::Form.
 
 =head2 Function Reference
 
