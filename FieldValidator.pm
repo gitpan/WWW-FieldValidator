@@ -11,7 +11,7 @@ use warnings;;
 
 package WWW::FieldValidator;
 
-our $VERSION = "1.02";
+our $VERSION = "1.03";
 
 # The following constants represent the validator types that can be
 # used to validate the specified user input.
@@ -142,13 +142,13 @@ __END__
 
 =head1 NAME
 
-WWW::FieldValidator
+WWW::FieldValidator - Used by WWW::Form, provides simple yet robust validation of user entered input
 
 =cut
 
 =head1 SYNOPSIS
 
-WWW::FieldValidator - Used by WWW::Form, provides simple yet robust validation of user entered input
+OO module that is used to validate input.
 
 =cut
 
@@ -270,7 +270,7 @@ send me an email at perlmods@benschmaus.com.
 
 =head1 BUGS
 
-Don't know of any, but let me know if you find any.
+None that I know of, but let me know if you find any.
 
 Send email to perlmods@benschmaus.com
 
