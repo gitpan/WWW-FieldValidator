@@ -1,0 +1,9 @@
+To install this module:
+
+Uncompress and untar the most recent version of WWW::FieldValidator using gunzip and tar.
+
+Then follow the standard steps for installing a Perl module.
+
+perl Makefile.PL
+make test
+make install

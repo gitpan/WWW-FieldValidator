@@ -11,7 +11,7 @@ use warnings;;
 
 package WWW::FieldValidator;
 
-our $VERSION = "1.03";
+our $VERSION = "1.04";
 
 # The following constants represent the validator types that can be
 # used to validate the specified user input.
@@ -108,6 +108,16 @@ sub validate {
     }
 }
 
+sub getFeedback {
+    my $self = shift;
+    return $self->{feedback};
+}
+
+sub get_feedback {
+    my $self = shift;
+    return $self->getFeedback();
+}
+
 # Checks to see if input is a well formed email address.
 sub _validateEmail {
     my $self  = shift;
@@ -142,15 +152,11 @@ __END__
 
 =head1 NAME
 
-WWW::FieldValidator - Used by WWW::Form, provides simple yet robust validation of user entered input
-
-=cut
+WWW::FieldValidator - Provides simple yet robust validation of user entered input
 
 =head1 SYNOPSIS
 
 OO module that is used to validate input.
-
-=cut
 
 =head1 DESCRIPTION
 
@@ -161,7 +167,7 @@ properly.  All the validation is handled internally by WWW::Form.
 
 =head2 Function Reference
 
-new($validatorType, $errorFeedback, [$minLength, $maxLength, $regex], [$isOptional]);
+B<new($validatorType, $errorFeedback, [$minLength, $maxLength, $regex], [$isOptional])>
 
   Creates a FieldValidator object.  $validatorType is used to determine what type
   of validation will be performed on the input.  The following validator types are
@@ -249,15 +255,34 @@ new($validatorType, $errorFeedback, [$minLength, $maxLength, $regex], [$isOption
       }
   }
 
-=cut
+If you want to use WWW::FieldValidator outside of WWW::Form it's easy to do.  The only
+method you need to use is validate.
 
-=cut
+B<validate($input)>
+
+Returns true if $input passes validation or false otherwise.
+
+  Example:
+
+  my $email_validator = WWW::FieldValidator->new(WWW::FieldValidator::WELL_FORMED_EMAIL,
+                            'Please make sure you enter a well formed email address');
+
+  my $params = $r->param();
+
+  if (my $email = $params->{email}) {
+
+      unless ($email_validator->validate($email)) {
+          print $email_validator->getFeedback();
+      }
+  }
+
+B<getFeedback()>
+
+Returns error feedback for a FieldValidator.  This can also be called as get_feedback().
 
 =head1 SEE ALSO
 
 WWW::Form
-
-=cut
 
 =head1 AUTHOR
 
@@ -266,15 +291,11 @@ Ben Schmaus
 If you find this module useful or have any suggestions or comments please
 send me an email at perlmods@benschmaus.com.
 
-=cut
-
 =head1 BUGS
 
 None that I know of, but let me know if you find any.
 
 Send email to perlmods@benschmaus.com
-
-=cut
 
 =head1 COPYRIGHT
 
